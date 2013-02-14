@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/red"
+    android:layout_height="match_parent" >
+
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+
+        <Button
+        android:id="@+id/polaczenia_mainBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Połączenia" />
+            <Button
+        android:id="@+id/sms_mainBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SMSy" />
+                <Button
+        android:id="@+id/klikniecia_mainBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kliknięcia" />
+                    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Przejdź do sensora" />
+        <Button
+        android:id="@+id/ladowanie_mainBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ładowanie baterii" />
+                <Button
+        android:id="@+id/uruchomienia_app_mainBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Uruchomienia aplikacji" />
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="150dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Zatrzymaj usługi" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="150dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Startuj usługi" />
+
+</LinearLayout>
+
+    <!--  <TextView
+        android:id="@+id/wychodzace_pol_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wychodzące: " />
+        <TextView
+        android:id="@+id/przychodzace_pol_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Przychodzące: " />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wysłałeś sms: "
+        tools:context=".MainActivity" />
+        <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dotknięto mnie: " /> -->
+   
+</LinearLayout>
+<!--  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Dotknij mnie :-)"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout> -->
+   
+
+</LinearLayout>
