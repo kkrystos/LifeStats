@@ -30,7 +30,6 @@ public final class R {
         public static final int klikniecia_mainBtn=0x7f0a0002;
         public static final int ladowanieTv=0x7f0a000a;
         public static final int ladowanie_mainBtn=0x7f0a0004;
-        public static final int listView1=0x7f0a0012;
         public static final int menu_settings=0x7f0a0016;
         public static final int polaczenia_mainBtn=0x7f0a0000;
         public static final int przychodzace_polTv=0x7f0a000c;
@@ -41,7 +40,8 @@ public final class R {
         public static final int text=0x7f0a000d;
         public static final int textView1=0x7f0a0013;
         public static final int textView2=0x7f0a0009;
-        public static final int uruchomieniaTv=0x7f0a0011;
+        public static final int uruchomieniaLSTv=0x7f0a0011;
+        public static final int uruchomieniaTv=0x7f0a0012;
         public static final int uruchomienia_app_mainBtn=0x7f0a0005;
         public static final int wych_pods=0x7f0a0015;
         public static final int wychodzace_polTv=0x7f0a000b;

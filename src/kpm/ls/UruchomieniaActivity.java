@@ -28,6 +28,7 @@ public class UruchomieniaActivity extends Activity{
 	private DataBaseManager dataBaseManager;
 	private DataEvent dataEvent;
 	private SQLiteDatabase myDb;
+	private TextView uruchomieniaLSTv;
 	private TextView uruchomieniaTv;
 
 	@Override
@@ -39,9 +40,33 @@ public class UruchomieniaActivity extends Activity{
 		dataEvent = new DataEvent(getApplicationContext());
 		dataBaseManager = new DataBaseManager();
 		
+		uruchomieniaLSTv = (TextView) findViewById(R.id.uruchomieniaLSTv);
 		uruchomieniaTv = (TextView) findViewById(R.id.uruchomieniaTv);
+
 		
-		ListView lv =(ListView) findViewById(R.id.listView1);
+		
+
+//		 for(int j=0; j<20; j++){
+//			 al.add(am.getRunningTasks(1).get(j).topActivity.getPackageName());
+//			 
+//		 }
+//	        uruchomieniaTv.setText(packageName);
+	        
+//	        am.getRunningTasks(10).get(1).topActivity.getPackageName();
+//	        uruchomieniaTv.setText(""+al);
+
+		
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+//		
+		ilosc_uruchomien = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2, NAZWA_TABELI_7);
+		if(ilosc_uruchomien != null){
+			uruchomieniaLSTv.setText("Aplikacjê LifeStats uruchomi³eœ:  "+ilosc_uruchomien+"  razy");	
+		}
 		
 		ArrayList<String> al = new ArrayList<String>();
 		
@@ -59,39 +84,19 @@ public class UruchomieniaActivity extends Activity{
 		
 		
 		 Log.i("TAGus", ""+i);
-
-//		 for(int j=0; j<20; j++){
-//			 al.add(am.getRunningTasks(1).get(j).topActivity.getPackageName());
-//			 
-//		 }
-//	        uruchomieniaTv.setText(packageName);
-	        
-//	        am.getRunningTasks(10).get(1).topActivity.getPackageName();
-//	        uruchomieniaTv.setText(""+al);
 		 final   ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 		 final List<RunningTaskInfo> recentTasks = activityManager.getRunningTasks(Integer.MAX_VALUE);
 
 		     for (int j = 0; j < recentTasks.size(); j++) 
 		     {
-		    	 if(recentTasks.get(j).baseActivity.toShortString().contains("com.android") == false){
+//		    	 if(recentTasks.get(j).baseActivity.toShortString().contains("com.android") == false){
 		    		 Log.i("TAGus", "App: " +recentTasks.get(j).baseActivity.toShortString());         
 				     ii++;
-		    	 }
+//		    	 }
 		         
 		     }
 		     Log.i("TAGus",""+ii);
-		
-	}
-
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-//		
-//		ilosc_uruchomien = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2, NAZWA_TABELI_7);
-//		if(ilosc_uruchomien != null){
-//			uruchomieniaTv.setText("Aplikacjê LifeStats uruchomi³eœ:  "+ilosc_uruchomien+"  razy");	
-//		}
+		     uruchomieniaTv.setText("Liczba uruchomionych aplikacji: "+ii);
 //
 	}
 }
