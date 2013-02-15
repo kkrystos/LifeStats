@@ -41,7 +41,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Uruchomienia aplikacji" />
-
+	<Button
+        android:id="@+id/internet_czasBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Czas korzystania z Internetu" />
 
     <LinearLayout
         android:layout_width="fill_parent"

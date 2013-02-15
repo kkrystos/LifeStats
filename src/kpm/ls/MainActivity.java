@@ -48,10 +48,12 @@ public class MainActivity extends Activity implements OnClickListener{
         activityLadowanie.setOnClickListener(this);
         Button activityUruchomienia = (Button)findViewById(R.id.uruchomienia_app_mainBtn);
         activityUruchomienia.setOnClickListener(this);
+        Button internetCzas = (Button)findViewById(R.id.internet_czasBtn);
+        internetCzas.setOnClickListener(this);
         
         startService(new Intent(this, PhoneStateService.class));
         startService(new Intent(this, SmsService.class)); 
-        startService(new Intent(this, CallService.class)); 
+        startService(new Intent(this, DefaultService.class)); 
     }
 
 	public void onClick(View arg0) {
@@ -87,6 +89,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.uruchomienia_app_mainBtn:
 			Intent uruchInt = new Intent(this,UruchomieniaActivity.class);
 			startActivity(uruchInt);
+	        break;
+		case R.id.internet_czasBtn:
+			Intent internetInt = new Intent(this,InternetCzasActivity.class);
+			startActivity(internetInt);
 	        break;
 		}
 	} 
