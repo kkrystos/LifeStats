@@ -46,6 +46,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Czas korzystania z Internetu" />
+	<Button
+        android:id="@+id/pionPoziomBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pion/ Poziom" />
 
     <LinearLayout
         android:layout_width="fill_parent"

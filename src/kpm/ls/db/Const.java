@@ -13,6 +13,7 @@ public interface Const extends BaseColumns {
     public static final String NAZWA_TABELI_6 = "ladowanie" ;
     public static final String NAZWA_TABELI_7 = "uruchomienia" ;
     public static final String NAZWA_TABELI_8 = "internet_wlaczony" ;
+    public static final String NAZWA_TABELI_9 = "pion_poziom" ;
     
     public static final String URZAD = "kpm.ls.db" ;
     public static final Uri TRESC_URI = Uri.parse("content://"
