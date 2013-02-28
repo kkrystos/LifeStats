@@ -1,6 +1,7 @@
 package kpm.ls.db;
 import static kpm.ls.db.Const.KOLUMNA_1;
 
+
 import static kpm.ls.db.Const.KOLUMNA_2;
 import static kpm.ls.db.Const.KOLUMNA_3;
 import static kpm.ls.db.Const.KOLUMNA_4;
@@ -14,6 +15,7 @@ import static kpm.ls.db.Const.NAZWA_TABELI_6;
 import static kpm.ls.db.Const.NAZWA_TABELI_7;
 import static kpm.ls.db.Const.NAZWA_TABELI_8;
 import static kpm.ls.db.Const.NAZWA_TABELI_9;
+import static kpm.ls.db.Const.NAZWA_TABELI_10;
 import static android.provider.BaseColumns._ID;
 import android.content.ContentValues;
 import android.content.Context;
@@ -71,6 +73,10 @@ public class DataEvent extends SQLiteOpenHelper {
       		  + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KOLUMNA_1
                 + " TEXT," + KOLUMNA_2 + " TEXT," + KOLUMNA_3 + " TEXT," 
                 + KOLUMNA_4 + " TEXT,"+ KOLUMNA_5 +" TEXT );" );
+        bd.execSQL("CREATE TABLE " + NAZWA_TABELI_10 + " (" + _ID
+        		  + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KOLUMNA_1
+                  + " TEXT," + KOLUMNA_2 + " TEXT," + KOLUMNA_3 + " TEXT," 
+                  + KOLUMNA_4 + " TEXT,"+ KOLUMNA_5 +" TEXT );" );
     }
 
     @Override
@@ -85,6 +91,7 @@ public class DataEvent extends SQLiteOpenHelper {
         bd.execSQL("DROP TABLE" + NAZWA_TABELI_7);
         bd.execSQL("DROP TABLE" + NAZWA_TABELI_8);
         bd.execSQL("DROP TABLE" + NAZWA_TABELI_9);
+        bd.execSQL("DROP TABLE" + NAZWA_TABELI_10);
         onCreate(bd);
     }
     

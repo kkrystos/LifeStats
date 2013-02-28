@@ -1,13 +1,12 @@
 package kpm.ls;
 
 import static kpm.ls.db.Const.KOLUMNA_2;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
 import static kpm.ls.db.Const.NAZWA_TABELI_7;
+import static kpm.ls.db.Const.NAZWA_TABELI_10;
 import kpm.ls.db.DataEvent;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -25,11 +24,13 @@ import android.widget.Toast;
 public class UruchomieniaActivity extends Activity{
 	
 	private String ilosc_uruchomien = "0";
+	private String czas_chrome = "0";
 	private DataBaseManager dataBaseManager;
 	private DataEvent dataEvent;
 	private SQLiteDatabase myDb;
 	private TextView uruchomieniaLSTv;
 	private TextView uruchomieniaTv;
+	private TextView chromeCzasTv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,30 +43,26 @@ public class UruchomieniaActivity extends Activity{
 		
 		uruchomieniaLSTv = (TextView) findViewById(R.id.uruchomieniaLSTv);
 		uruchomieniaTv = (TextView) findViewById(R.id.uruchomieniaTv);
-
-		
-		
-
+		chromeCzasTv = (TextView) findViewById(R.id.chromeCzasTv);
 //		 for(int j=0; j<20; j++){
-//			 al.add(am.getRunningTasks(1).get(j).topActivity.getPackageName());
-//			 
+//			 al.add(am.getRunningTasks(1).get(j).topActivity.getPackageName());		 
 //		 }
-//	        uruchomieniaTv.setText(packageName);
-	        
+//	        uruchomieniaTv.setText(packageName);	        
 //	        am.getRunningTasks(10).get(1).topActivity.getPackageName();
-//	        uruchomieniaTv.setText(""+al);
-
-		
+//	        uruchomieniaTv.setText(""+al);	
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-		super.onResume();
-//		
+		super.onResume();	
 		ilosc_uruchomien = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2, NAZWA_TABELI_7);
+		czas_chrome = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2, NAZWA_TABELI_10);
 		if(ilosc_uruchomien != null){
 			uruchomieniaLSTv.setText("Aplikacjê LifeStats uruchomi³eœ:  "+ilosc_uruchomien+"  razy");	
+		}
+		if(czas_chrome != null){
+			chromeCzasTv.setText("Z przegl¹darki Chrome korzysta³eœ :  "+czas_chrome+"  sek.");	
 		}
 		
 		ArrayList<String> al = new ArrayList<String>();
@@ -89,11 +86,11 @@ public class UruchomieniaActivity extends Activity{
 
 		     for (int j = 0; j < recentTasks.size(); j++) 
 		     {
-		    	 if(recentTasks.get(j).baseActivity.toShortString().contains("chrome") == true){
-		    		 Log.i("TAGus", "App: " +recentTasks.get(j).baseActivity.toShortString());    
-		    		 Toast.makeText(getApplicationContext(), "chrme odpalony", Toast.LENGTH_SHORT).show();
+//		    	 if(recentTasks.get(j).baseActivity.toShortString().contains("chrome") == true){
+//		    		 Log.i("TAGus", "App: " +recentTasks.get(j).baseActivity.toShortString());    
+//		    		 Toast.makeText(getApplicationContext(), "chrme odpalony", Toast.LENGTH_SHORT).show();
 				     ii++;
-		    	 }		         
+//		    	 }		         
 		     }
 		     Log.i("TAGus",""+ii);
 		     uruchomieniaTv.setText("Liczba uruchomionych aplikacji: "+ii);

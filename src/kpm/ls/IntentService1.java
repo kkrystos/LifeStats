@@ -1,6 +1,10 @@
 package kpm.ls;
 
+import static kpm.ls.db.Const.NAZWA_TABELI_10;
+
 import java.util.List;
+
+import kpm.ls.db.DataEvent;
 
 import android.app.ActivityManager;
 import android.app.IntentService;
@@ -15,6 +19,8 @@ public class IntentService1 extends IntentService{
 	
 	private int czasChrome = 0;
 	static boolean  check = false;
+	private DataEvent dataEvent;
+	private DataBaseManager dataBaseManager;
 
 	public IntentService1() {
 		super("IntentService1");
@@ -24,8 +30,8 @@ public class IntentService1 extends IntentService{
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		// TODO Auto-generated method stub
-		Log.i("TAGus", "Service started");
-		
+    	dataEvent = new DataEvent(getApplicationContext());  
+    	dataBaseManager = new DataBaseManager();
 		
 		SimpleThread simpleThread = new SimpleThread("Chrome Count");
 		if(check == false){
@@ -50,6 +56,7 @@ public class IntentService1 extends IntentService{
 			     {
 			    	 if(recentTasks.get(j).baseActivity.toShortString().contains("chrome") == true){
 			    		 czasChrome = czasChrome + 3;
+			    		 dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_10, "czasChrome", ""+3, "", "", "");
 			    		 Log.i("TAGus","chrme odpalony przez: "+czasChrome+" sec.");
 			    	 }		         
 			     }

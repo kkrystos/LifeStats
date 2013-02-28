@@ -20,17 +20,23 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
                 
-                        <TextView
+           <TextView
             android:id="@+id/uruchomieniaLSTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Uruchomiłeś aplikację LS: "
           />
-                                                <TextView
+           <TextView
             android:id="@+id/uruchomieniaTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Uruchomiłeś aplikację: "
+          />
+                      <TextView
+            android:id="@+id/chromeCzasTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chrome czas: "
           />
             </LinearLayout>
         </ScrollView>
