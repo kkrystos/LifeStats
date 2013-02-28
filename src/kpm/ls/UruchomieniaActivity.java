@@ -89,14 +89,13 @@ public class UruchomieniaActivity extends Activity{
 
 		     for (int j = 0; j < recentTasks.size(); j++) 
 		     {
-//		    	 if(recentTasks.get(j).baseActivity.toShortString().contains("com.android") == false){
-		    		 Log.i("TAGus", "App: " +recentTasks.get(j).baseActivity.toShortString());         
+		    	 if(recentTasks.get(j).baseActivity.toShortString().contains("chrome") == true){
+		    		 Log.i("TAGus", "App: " +recentTasks.get(j).baseActivity.toShortString());    
+		    		 Toast.makeText(getApplicationContext(), "chrme odpalony", Toast.LENGTH_SHORT).show();
 				     ii++;
-//		    	 }
-		         
+		    	 }		         
 		     }
 		     Log.i("TAGus",""+ii);
 		     uruchomieniaTv.setText("Liczba uruchomionych aplikacji: "+ii);
-//
 	}
 }

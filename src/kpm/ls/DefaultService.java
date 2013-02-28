@@ -19,8 +19,8 @@ public class DefaultService extends Service{
 	private InternetListener internetListener;
 	//filtry uruchomionych aplikacji
 	IntentFilter intentFilter1 = new IntentFilter("android.intent.action.PACKAGE_FIRST_LAUNCH");
-	IntentFilter intentFilter2 = new IntentFilter("android.intent.category.LAUNCHER");
-	IntentFilter intentFilter3 = new IntentFilter("android.intent.action.MAIN");
+	IntentFilter intentFilter2 = new IntentFilter("com.android.chrome/com.google.android.apps.chrome.Main");
+//	IntentFilter intentFilter3 = new IntentFilter("android.intent.action.MAIN");
 	//filtry do InternetListener
 	IntentFilter intentFilterI1 = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
 	IntentFilter intentFilterI2 = new IntentFilter("android.net.wifi.STATE_CHANGE");
@@ -51,7 +51,7 @@ public class DefaultService extends Service{
 	    internetListener = new InternetListener();
 //	    registerReceiver(appListener, intentFilter1);
 	    registerReceiver(appListener, intentFilter2);
-	    registerReceiver(appListener, intentFilter3);
+//	    registerReceiver(appListener, intentFilter3);
 	    registerReceiver(internetListener, intentFilterI1);
 	    registerReceiver(internetListener, intentFilterI2);
 	    

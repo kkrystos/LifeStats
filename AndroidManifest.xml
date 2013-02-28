@@ -43,6 +43,12 @@
       <meta-data android:name="android.appwidget.provider"
                  android:resource="@xml/widget_provider" />
     </receiver>
+    <receiver android:name=".ChromeReceiver">
+        <intent-filter>
+          
+            <data android:scheme="package" android:path="com.android.chrome" />
+        </intent-filter>
+    </receiver>
      <activity android:name="kpm.ls.SensorClass" ></activity>
      <activity android:name="kpm.ls.PolaczeniaActivity" ></activity>
      <activity android:name="kpm.ls.SMSActivity" ></activity>
@@ -54,6 +60,7 @@
                 <service android:name=".PhoneStateService"></service>
                 <service android:name="kpm.ls.DefaultService"></service>
                 <service android:name="kpm.ls.SmsService"></service>
+                <service android:name="kpm.ls.IntentService1"></service>
     </application>
 
 </manifest>
