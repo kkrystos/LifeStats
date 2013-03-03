@@ -44,9 +44,9 @@ public class DefaultService extends Service{
 	
 	@Override
 	public void onCreate() {
-		Toast.makeText(getApplicationContext(), 
-              "CallService uruchomiony", 
-              Toast.LENGTH_SHORT).show();
+//		Toast.makeText(getApplicationContext(), 
+//              "CallService uruchomiony", 
+//              Toast.LENGTH_SHORT).show();
 	    super.onCreate();	  
 	    internetListener = new InternetListener();
 //	    registerReceiver(appListener, intentFilter1);
@@ -61,11 +61,11 @@ public class DefaultService extends Service{
 	   orientationInit = getResources().getConfiguration().orientation;
 	   
 	   if(orientationInit == 1){
-		   Toast.makeText(getApplicationContext(), "ORIENTATION_PORTRAIT", Toast.LENGTH_SHORT).show();	 
+//		   Toast.makeText(getApplicationContext(), "ORIENTATION_PORTRAIT", Toast.LENGTH_SHORT).show();	 
 		   startPion = new Date().getTime();
 	   }
 	   else if(orientationInit == 2){
-		   Toast.makeText(getApplicationContext(), "ORIENTATION_LANDSCAPE", Toast.LENGTH_SHORT).show();
+//		   Toast.makeText(getApplicationContext(), "ORIENTATION_LANDSCAPE", Toast.LENGTH_SHORT).show();
 		   startPoziom = new Date().getTime();
 	   }
 	}
@@ -82,7 +82,7 @@ public class DefaultService extends Service{
 	    		stopPion = new Date().getTime();
 	    		startPoziom = new Date().getTime();
 	    		wynikPion = (stopPion - startPion)/1000;
-	    		Toast.makeText(getApplicationContext(), "ORIENTATION_PORTRAIT: "+ wynikPion, Toast.LENGTH_SHORT).show();
+//	    		Toast.makeText(getApplicationContext(), "ORIENTATION_PORTRAIT: "+ wynikPion, Toast.LENGTH_SHORT).show();
 	    		 dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_9, "pion_poziom", ""+wynikPion, "0", "", "");
 	    	break;
 	    	case Configuration.ORIENTATION_PORTRAIT:
@@ -90,7 +90,7 @@ public class DefaultService extends Service{
 	    		stopPoziom = new Date().getTime();
 	    		startPion = new Date().getTime();
 	    		wynikPoziom = (stopPoziom - startPoziom)/1000;
-	    		Toast.makeText(getApplicationContext(), "ORIENTATION_LANDSCAPE: "+ wynikPoziom, Toast.LENGTH_SHORT).show();  
+//	    		Toast.makeText(getApplicationContext(), "ORIENTATION_LANDSCAPE: "+ wynikPoziom, Toast.LENGTH_SHORT).show();  
 	    		dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_9, "pion_poziom", "0", ""+wynikPoziom, "", "");
 	    	break;
 	    	} 

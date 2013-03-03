@@ -20,23 +20,29 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
                 
-           <TextView
+		<TextView
             android:id="@+id/uruchomieniaLSTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Uruchomiłeś aplikację LS: "
-          />
-           <TextView
+            />
+		<TextView
             android:id="@+id/uruchomieniaTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Uruchomiłeś aplikację: "
           />
-                      <TextView
+		 <TextView
             android:id="@+id/chromeCzasTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chrome czas: "
+            android:text="Z przeglądarki Chrome korzystałeś : 0  sek."
+          />
+		<TextView
+            android:id="@+id/browserCzasTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Z domyślnej przeglądarki korzystałeś : 0  sek."
           />
             </LinearLayout>
         </ScrollView>

@@ -47,17 +47,17 @@ public class PhoneStateService extends Service{
 //	    registerReceiver(batteryListener, intentFilter7);
 	    registerReceiver(batteryListener, intentFilter8);
 	    registerReceiver(batteryListener, intentFilter9);
-	    myToast = Toast.makeText(getApplicationContext(), 
-	                             "Us³uga PO£¥CZENIA zosta³a uruchomiona", 
-	                             Toast.LENGTH_SHORT);
-	    myToast.show();
+//	    myToast = Toast.makeText(getApplicationContext(), 
+//	                             "Us³uga PO£¥CZENIA zosta³a uruchomiona", 
+//	                             Toast.LENGTH_SHORT);
+//	    myToast.show();
 	}
 	
 	@Override
 	public void onDestroy() {
 	    
-	    myToast.setText("Us³uga PO£¥CZENIA zosta³a zatrzymana");
-	    myToast.show();
+//	    myToast.setText("Us³uga PO£¥CZENIA zosta³a zatrzymana");
+//	    myToast.show();
 	    unregisterReceiver(this.phoneStateListener);
 	    unregisterReceiver(this.batteryListener);
 

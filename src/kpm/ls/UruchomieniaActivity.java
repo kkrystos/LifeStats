@@ -1,36 +1,32 @@
 package kpm.ls;
 
 import static kpm.ls.db.Const.KOLUMNA_2;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import static kpm.ls.db.Const.KOLUMNA_4;
 import java.util.List;
 import static kpm.ls.db.Const.NAZWA_TABELI_7;
 import static kpm.ls.db.Const.NAZWA_TABELI_10;
 import kpm.ls.db.DataEvent;
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class UruchomieniaActivity extends Activity{
 	
 	private String ilosc_uruchomien = "0";
 	private String czas_chrome = "0";
+	private String czas_browser = "0";
 	private DataBaseManager dataBaseManager;
 	private DataEvent dataEvent;
 	private SQLiteDatabase myDb;
 	private TextView uruchomieniaLSTv;
 	private TextView uruchomieniaTv;
 	private TextView chromeCzasTv;
+	private TextView browserCzasTv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +40,7 @@ public class UruchomieniaActivity extends Activity{
 		uruchomieniaLSTv = (TextView) findViewById(R.id.uruchomieniaLSTv);
 		uruchomieniaTv = (TextView) findViewById(R.id.uruchomieniaTv);
 		chromeCzasTv = (TextView) findViewById(R.id.chromeCzasTv);
-//		 for(int j=0; j<20; j++){
-//			 al.add(am.getRunningTasks(1).get(j).topActivity.getPackageName());		 
-//		 }
-//	        uruchomieniaTv.setText(packageName);	        
-//	        am.getRunningTasks(10).get(1).topActivity.getPackageName();
-//	        uruchomieniaTv.setText(""+al);	
+		browserCzasTv = (TextView) findViewById(R.id.browserCzasTv);
 	}
 
 	@Override
@@ -58,41 +49,38 @@ public class UruchomieniaActivity extends Activity{
 		super.onResume();	
 		ilosc_uruchomien = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2, NAZWA_TABELI_7);
 		czas_chrome = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2, NAZWA_TABELI_10);
+		czas_browser = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_4, NAZWA_TABELI_10);
 		if(ilosc_uruchomien != null){
 			uruchomieniaLSTv.setText("Aplikacjê LifeStats uruchomi³eœ:  "+ilosc_uruchomien+"  razy");	
 		}
 		if(czas_chrome != null){
-			chromeCzasTv.setText("Z przegl¹darki Chrome korzysta³eœ :  "+czas_chrome+"  sek.");	
+			int godzina;
+			int minuta;
+			int sekunda;
+			sekunda = Integer.parseInt(czas_chrome);
+			minuta = sekunda/60;
+			godzina= minuta/60;
+			chromeCzasTv.setText("Z przegl¹darki Chrome korzysta³eœ: "+godzina+" godz. " +minuta +" min. "+(sekunda%60)+"  sek.");	
+		}
+		if(czas_browser != null){
+			int godzina;
+			int minuta;
+			int sekunda;
+			sekunda = Integer.parseInt(czas_browser);
+			minuta = sekunda/60;
+			godzina= minuta/60;
+			browserCzasTv.setText("Z domyœlnej przegl¹darki korzysta³eœ: " +godzina+" godz. " +minuta +" min. "+(sekunda%60)+"  sek.");	
 		}
 		
-		ArrayList<String> al = new ArrayList<String>();
-		
-		ActivityManager am = (ActivityManager)this.getSystemService(ACTIVITY_SERVICE);
-		List<ActivityManager.RunningAppProcessInfo> procList = am.getRunningAppProcesses();
-		int i = 0;
-		int ii = 0;
-		
-		for (ActivityManager.RunningAppProcessInfo proc : procList){
-		    Log.i("TAGus", proc.processName);
-//		    al.add(proc.processName + "\n");
-		    i++;
-		}
-		al.add(""+i);
-		
-		
-		 Log.i("TAGus", ""+i);
+		 int iloscUruchomienAll = 0;	
 		 final   ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 		 final List<RunningTaskInfo> recentTasks = activityManager.getRunningTasks(Integer.MAX_VALUE);
 
 		     for (int j = 0; j < recentTasks.size(); j++) 
 		     {
-//		    	 if(recentTasks.get(j).baseActivity.toShortString().contains("chrome") == true){
-//		    		 Log.i("TAGus", "App: " +recentTasks.get(j).baseActivity.toShortString());    
-//		    		 Toast.makeText(getApplicationContext(), "chrme odpalony", Toast.LENGTH_SHORT).show();
-				     ii++;
-//		    	 }		         
+		    	 iloscUruchomienAll++;	         
 		     }
-		     Log.i("TAGus",""+ii);
-		     uruchomieniaTv.setText("Liczba uruchomionych aplikacji: "+ii);
+		     Log.i("TAGus",""+iloscUruchomienAll);
+		     uruchomieniaTv.setText("Liczba uruchomionych aplikacji: "+iloscUruchomienAll);
 	}
 }

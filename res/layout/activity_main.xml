@@ -57,8 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:orientation="horizontal" >
-
-    <Button
+<!-- <Button
         android:id="@+id/button1"
         android:layout_width="150dp"
         android:layout_weight="1"
@@ -69,7 +68,8 @@
         android:layout_width="150dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Startuj usługi" />
+        android:text="Startuj usługi" /> -->
+    
 
 </LinearLayout>
 

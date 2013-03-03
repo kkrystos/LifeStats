@@ -9,11 +9,11 @@
         android:id="@+id/pionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pion :-) : " />
+        android:text="Pion - obróć ekran : " />
           <TextView
         android:id="@+id/poziomTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Poziom :-) : " />
+        android:text="Poziom - obróć ekran : " />
 
 </LinearLayout>

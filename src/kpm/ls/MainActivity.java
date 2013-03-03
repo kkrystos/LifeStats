@@ -36,10 +36,10 @@ public class MainActivity extends Activity implements OnClickListener{
 	    dataBaseManager = new DataBaseManager();
 	    dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_7, "", "1", "", "", "");
         
-        Button call = (Button)findViewById(R.id.button1);
-        call.setOnClickListener(this);
-        Button start_services = (Button)findViewById(R.id.button3);
-        start_services.setOnClickListener(this);
+//        Button call = (Button)findViewById(R.id.button1);
+//        call.setOnClickListener(this);
+//        Button start_services = (Button)findViewById(R.id.button3);
+//        start_services.setOnClickListener(this);
         Button activityPolaczenia = (Button)findViewById(R.id.polaczenia_mainBtn);
         activityPolaczenia.setOnClickListener(this);
         Button activitySms = (Button)findViewById(R.id.sms_mainBtn);
@@ -66,14 +66,18 @@ public class MainActivity extends Activity implements OnClickListener{
 
 	public void onClick(View arg0) {
 		switch(arg0.getId()){
-		case R.id.button1:
-			 stopService(new Intent(this, PhoneStateService.class));
-			 stopService(new Intent(this, SmsService.class));
-			break;
-		case R.id.button3:
-	        startService(new Intent(this, PhoneStateService.class));
-	        startService(new Intent(this, SmsService.class));
-	        break;
+//		case R.id.button1:
+//			 stopService(new Intent(this, PhoneStateService.class));
+////			 stopService(new Intent(this, SmsService.class));
+////			 stopService(new Intent(this, DefaultService.class));
+//			 stopService(new Intent(this, IntentService1.class));
+//			break;
+//		case R.id.button3:
+//	        startService(new Intent(this, PhoneStateService.class));
+//	        startService(new Intent(this, SmsService.class)); 
+//	        startService(new Intent(this, DefaultService.class));
+//	        startService(new Intent(this, IntentService1.class)); 
+//	        break;
 		case R.id.polaczenia_mainBtn:
 			Intent intPol = new Intent(this,PolaczeniaActivity.class);
 			startActivity(intPol);

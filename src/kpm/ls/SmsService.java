@@ -57,10 +57,10 @@ public class SmsService extends Service{
 	    smsListener = new SmsListener();
 	    registerReceiver(smsListener, intentFilter1);
 	    registerReceiver(smsListener, intentFilter2);
-	    myToast = Toast.makeText(getApplicationContext(), 
-	                             "Us³uga SMS zosta³a uruchomiona", 
-	                             Toast.LENGTH_SHORT);
-	    myToast.show();
+//	    myToast = Toast.makeText(getApplicationContext(), 
+//	                             "Us³uga SMS zosta³a uruchomiona", 
+//	                             Toast.LENGTH_SHORT);
+//	    myToast.show();
 	    
 	    mcco = new MissedCallsContentObserver(new Handler());
 	      getApplicationContext().getContentResolver().registerContentObserver(Uri.parse("content://mms-sms/sent"), true, mcco);
@@ -71,7 +71,7 @@ public class SmsService extends Service{
 	@Override
 	public void onDestroy() {
 	    super.onDestroy();
-	    myToast.setText("Us³uga SMS zosta³a zatrzymana");
+//	    myToast.setText("Us³uga SMS zosta³a zatrzymana");
 	    myToast.show();
 	    unregisterReceiver(this.smsListener);
 	    getApplicationContext().getContentResolver().unregisterContentObserver(mcco);
@@ -140,7 +140,9 @@ public class SmsService extends Service{
         	    @Override
         	    public boolean deliverSelfNotifications() {
         	        return false;
-        	    }
+        	    }        	
+        	    
     }
+	
 
 }

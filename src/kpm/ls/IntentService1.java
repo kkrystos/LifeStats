@@ -1,23 +1,17 @@
 package kpm.ls;
 
 import static kpm.ls.db.Const.NAZWA_TABELI_10;
-
-import java.util.List;
-
 import kpm.ls.db.DataEvent;
-
 import android.app.ActivityManager;
 import android.app.IntentService;
-import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 public class IntentService1 extends IntentService{
 	
 	private int czasChrome = 0;
+	private int czasBrowser = 0;
 	static boolean  check = false;
 	private DataEvent dataEvent;
 	private DataBaseManager dataBaseManager;
@@ -33,7 +27,7 @@ public class IntentService1 extends IntentService{
     	dataEvent = new DataEvent(getApplicationContext());  
     	dataBaseManager = new DataBaseManager();
 		
-		SimpleThread simpleThread = new SimpleThread("Chrome Count");
+		SimpleThread simpleThread = new SimpleThread("Browsers time Count");
 		if(check == false){
 			simpleThread.start();	
 			check = true;
@@ -45,21 +39,23 @@ public class IntentService1 extends IntentService{
 		super(str);
 	    }
 	    public void run() {
-		for (int i = 0; i < 1000; i++) {
+		for (long i = 0; i < 2139999999; i++) {
 		    Log.i("TAGus", i + " " + getName());
-		    
-		    
-		    final   ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-			 final List<RunningTaskInfo> recentTasks = activityManager.getRunningTasks(Integer.MAX_VALUE);
-
-			     for (int j = 0; j < recentTasks.size(); j++) 
-			     {
-			    	 if(recentTasks.get(j).baseActivity.toShortString().contains("chrome") == true){
-			    		 czasChrome = czasChrome + 3;
-			    		 dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_10, "czasChrome", ""+3, "", "", "");
-			    		 Log.i("TAGus","chrme odpalony przez: "+czasChrome+" sec.");
-			    	 }		         
-			     }
+		    ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+		    String packageName = am.getRunningTasks(1).get(0).topActivity.getPackageName();
+//		    String className = am.getRunningTasks(1).get(0).topActivity.getClassName();
+		    if(packageName.contains("chrome")){
+		    	czasChrome = czasChrome + 3;
+			    Log.i("TAGus","pack: "+packageName);
+			    Log.i("TAGus","czas: "+czasChrome);
+			    dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_10, "czasChrome", ""+3, "czasBrowser", ""+0, "");
+		    }
+		    else if(packageName.contains("com.android.browser")){
+		    	czasBrowser = czasBrowser +3;
+			    Log.i("TAGus","pack: "+packageName);
+			    Log.i("TAGus","czas: "+czasBrowser);
+			    dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_10, "czasChrome", ""+0, "czasBrowser", ""+3, "");
+		    }
 	            try {
 			sleep(3000);
 		    } catch (InterruptedException e) {}
