@@ -7,6 +7,7 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 public class IntentService1 extends IntentService{
 	
@@ -26,6 +27,7 @@ public class IntentService1 extends IntentService{
 		// TODO Auto-generated method stub
     	dataEvent = new DataEvent(getApplicationContext());  
     	dataBaseManager = new DataBaseManager();
+    	Log.i("TAGus", "IntentService1 uruchomiony");
 		
 		SimpleThread simpleThread = new SimpleThread("Browsers time Count");
 		if(check == false){
@@ -35,12 +37,15 @@ public class IntentService1 extends IntentService{
 	}
 	
 	class SimpleThread extends Thread {
+		int i = 0;
 	    public SimpleThread(String str) {
 		super(str);
 	    }
 	    public void run() {
-		for (long i = 0; i < 2139999999; i++) {
-		    Log.i("TAGus", i + " " + getName());
+//		for (long i = 0; i < 2139999999; i++) {
+			while(true) {
+				i++;
+		    Log.i("TAGus",  i + " " + getName());
 		    ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 		    String packageName = am.getRunningTasks(1).get(0).topActivity.getPackageName();
 //		    String className = am.getRunningTasks(1).get(0).topActivity.getClassName();
@@ -60,7 +65,7 @@ public class IntentService1 extends IntentService{
 			sleep(3000);
 		    } catch (InterruptedException e) {}
 		}
-		Log.i("TAGus", "DONE! " + getName());
+//		Log.i("TAGus", "DONE! " + getName());
 	    }
 	}
 	@Override

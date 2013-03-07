@@ -1,20 +1,15 @@
 package kpm.ls;
 import static kpm.ls.db.Const.NAZWA_TABELI_7;
-
 import kpm.ls.db.DataEvent;
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener{
 	EditText editTextCallNr;
@@ -60,7 +55,6 @@ public class MainActivity extends Activity implements OnClickListener{
         startService(new Intent(this, PhoneStateService.class));
         startService(new Intent(this, SmsService.class)); 
         startService(new Intent(this, DefaultService.class));
-        startService(new Intent(this, IntentService1.class)); 
     }
 
 

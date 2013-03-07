@@ -41,7 +41,7 @@ public class LadowanieActivity extends Activity{
     		ladowanie_min_int = (ladowanie_sek_int / 60);
     		ladowanie_godz_int = ladowanie_min_int/60;
     		ladowanie_sekund_int = (ladowanie_sek_int % 60);
-		    ladowanieTv.setText("£adowa³eœ mnie: \n"+(ladowanie_godz_int%60)+" godz. "+(ladowanie_min_int%60) + " min. " + ladowanie_sekund_int +" sek.");
+		    ladowanieTv.setText("£adowa³eœ mnie: \n"+ladowanie_godz_int+" godz. "+(ladowanie_min_int%60) + " min. " + ladowanie_sekund_int +" sek.");
     	}
     	else{
     		ladowanieTv.setText("£adowa³eœ mnie: \n"+ "0" + " min. " + "0"+" sek.");

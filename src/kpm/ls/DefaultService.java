@@ -44,9 +44,9 @@ public class DefaultService extends Service{
 	
 	@Override
 	public void onCreate() {
-//		Toast.makeText(getApplicationContext(), 
-//              "CallService uruchomiony", 
-//              Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), 
+              "DefaultService uruchomiony", 
+              Toast.LENGTH_SHORT).show();
 	    super.onCreate();	  
 	    internetListener = new InternetListener();
 //	    registerReceiver(appListener, intentFilter1);
@@ -54,6 +54,7 @@ public class DefaultService extends Service{
 //	    registerReceiver(appListener, intentFilter3);
 	    registerReceiver(internetListener, intentFilterI1);
 	    registerReceiver(internetListener, intentFilterI2);
+        startService(new Intent(this, IntentService1.class)); 
 	    
     	dataEvent = new DataEvent(getApplicationContext());  
     	dataBaseManager = new DataBaseManager();

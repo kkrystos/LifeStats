@@ -60,7 +60,7 @@ public class UruchomieniaActivity extends Activity{
 			sekunda = Integer.parseInt(czas_chrome);
 			minuta = sekunda/60;
 			godzina= minuta/60;
-			chromeCzasTv.setText("Z przegl¹darki Chrome korzysta³eœ: "+godzina+" godz. " +minuta +" min. "+(sekunda%60)+"  sek.");	
+			chromeCzasTv.setText("Z przegl¹darki Chrome korzysta³eœ: "+godzina+" godz. " +(minuta%60) +" min. "+(sekunda%60)+"  sek.");	
 		}
 		if(czas_browser != null){
 			int godzina;
@@ -69,7 +69,7 @@ public class UruchomieniaActivity extends Activity{
 			sekunda = Integer.parseInt(czas_browser);
 			minuta = sekunda/60;
 			godzina= minuta/60;
-			browserCzasTv.setText("Z domyœlnej przegl¹darki korzysta³eœ: " +godzina+" godz. " +minuta +" min. "+(sekunda%60)+"  sek.");	
+			browserCzasTv.setText("Z domyœlnej przegl¹darki korzysta³eœ: " +godzina+" godz. " +(minuta%60) +" min. "+(sekunda%60)+"  sek.");	
 		}
 		
 		 int iloscUruchomienAll = 0;	

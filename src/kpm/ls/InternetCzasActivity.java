@@ -41,7 +41,7 @@ public class InternetCzasActivity extends Activity{
     		internetCzas_min_int = (internetCzas_sek_int / 60);
     		internetCzas_godz_int = (internetCzas_sek_int / (60*60));
     		internetCzas_sekund_int = (internetCzas_sek_int % 60);
-    		internetCzasTv.setText("Czas spêdzony w Internecie: \n"+(internetCzas_godz_int%60)+" godz. "
+    		internetCzasTv.setText("Czas spêdzony w Internecie: \n"+internetCzas_godz_int+" godz. "
     		+(internetCzas_min_int%60) + " min. " + internetCzas_sekund_int +" sek.");
     	}
     	else{

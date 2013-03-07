@@ -13,10 +13,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Bundle;
 import android.provider.CallLog;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.widget.Toast;
 
 public class PhoneStateListenerImplement extends BroadcastReceiver {
