@@ -15,7 +15,9 @@ public class SensorClass extends Activity implements SensorEventListener {
     private SensorManager mgr;
     private Sensor accelerometer;
     private TextView text;
+    private TextView text2;
 	private int mRotation;
+	private int steps = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class SensorClass extends Activity implements SensorEventListener {
         accelerometer = mgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         
         text = (TextView) findViewById(R.id.text);
+        text2 = (TextView) findViewById(R.id.text2);
         
         WindowManager window = (WindowManager) this.getSystemService(WINDOW_SERVICE);
         int apiLevel = Integer.parseInt(Build.VERSION.SDK);
@@ -56,10 +59,25 @@ public class SensorClass extends Activity implements SensorEventListener {
 	}
 
 	public void onSensorChanged(SensorEvent event) {
-		String msg = String.format("X: %8.4f\nY: %8.4f\nZ: %8.4f\nObrót: %d",
-            event.values[0], event.values[1], event.values[2], mRotation);
+//		String msg = String.format("X: %8.4f\nY: %8.4f\nZ: %8.4f\nObrót: %d",
+//            event.values[0], event.values[1], event.values[2], mRotation);
+		float x = event.values[0];
+		float y = event.values[1];
+		float z = event.values[2];
+		
+		float g = (x * x + y * y + z * z) / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
+		
+		String msg = ""+g;
+		
+		if(g > 1.2){
+			steps = steps +1;
+		}
+		
 		Log.i("", msg);
 		text.setText(msg);
 		text.invalidate();
+		
+		text2.setText(""+steps);
+		text2.invalidate();
 	}
 }
