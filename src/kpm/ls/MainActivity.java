@@ -86,6 +86,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	        break;
 		case R.id.button2:
 			Intent i = new Intent(this,SensorClass.class);
+			i.putExtra("odchyleniePlusSrednia", 0.0);
 			startActivity(i);
 	        break;
 		case R.id.ladowanie_mainBtn:

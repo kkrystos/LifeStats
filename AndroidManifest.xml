@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kpm.ls"
     android:versionCode="1"
-    android:versionName="1.0.1" >
+    android:versionName="1.0.2" >
 
     <uses-sdk android:minSdkVersion="8" />
     <uses-feature android:required="true" android:name="android.hardware.sensor.accelerometer"></uses-feature>
@@ -60,6 +60,7 @@
      <activity android:name="kpm.ls.LadowanieActivity" ></activity>
      <activity android:name="kpm.ls.UruchomieniaActivity" ></activity>
      <activity android:name="kpm.ls.InternetCzasActivity" ></activity>
+     <activity android:name="kpm.ls.StepsLearnActivity" ></activity>
      <activity android:name="kpm.ls.PionPoziomActivity" ></activity>
                 <service android:name=".PhoneStateService"></service>
                 <service android:name="kpm.ls.DefaultService"></service>
