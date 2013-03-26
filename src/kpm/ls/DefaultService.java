@@ -8,6 +8,7 @@ import java.util.Date;
 import kpm.ls.db.DataEvent;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -15,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.media.AudioManager;
 import android.os.IBinder;
 import android.widget.Toast;
 
@@ -79,6 +81,12 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 			// Toast.LENGTH_SHORT).show();
 			startPoziom = new Date().getTime();
 		}
+		AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+		if(manager.isMusicActive())
+		 {
+		     Toast.makeText(getApplicationContext(), "Muza gra!!!!", Toast.LENGTH_SHORT).show();
+		 }
+
 	}
 
 	@Override

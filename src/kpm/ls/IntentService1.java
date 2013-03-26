@@ -6,6 +6,7 @@ import android.app.ActivityManager;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -30,6 +31,8 @@ public class IntentService1 extends IntentService{
     	Log.i("TAGus", "IntentService1 uruchomiony");
 		
 		SimpleThread simpleThread = new SimpleThread("Browsers time Count");
+		MusicPlayerThread musicPlayerThread = new MusicPlayerThread("MusicPlayerThread");
+		musicPlayerThread.start();
 		if(check == false){
 			simpleThread.start();	
 			check = true;
@@ -48,7 +51,7 @@ public class IntentService1 extends IntentService{
 		    Log.i("TAGus",  i + " " + getName());
 		    ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 		    String packageName = am.getRunningTasks(1).get(0).topActivity.getPackageName();
-//		    String className = am.getRunningTasks(1).get(0).topActivity.getClassName();
+		    String className = am.getRunningTasks(1).get(0).topActivity.getClassName();
 		    if(packageName.contains("chrome")){
 		    	czasChrome = czasChrome + 3;
 			    Log.i("TAGus","pack: "+packageName);
@@ -66,6 +69,29 @@ public class IntentService1 extends IntentService{
 		    } catch (InterruptedException e) {}
 		}
 //		Log.i("TAGus", "DONE! " + getName());
+	    }
+	}
+	class MusicPlayerThread extends Thread {
+		int i = 0;
+	    public MusicPlayerThread(String str) {
+		super(str);
+	    }
+	    public void run() {
+			while(true) {
+				i++;
+		    Log.i("TAGus",  i + " " + getName());
+			AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+			if(manager.isMusicActive())
+			 {
+				Log.i("TAGus","Muza gra!!!!");
+			 }
+			else{
+				Log.i("TAGus","Muza NIEE gra!!!!");
+			}
+	            try {
+			sleep(3000);
+		    } catch (InterruptedException e) {}
+		}
 	    }
 	}
 	@Override
