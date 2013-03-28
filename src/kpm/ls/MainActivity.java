@@ -54,6 +54,10 @@ public class MainActivity extends Activity implements OnClickListener{
         internetCzas.setOnClickListener(this);
         Button pionPoziom = (Button)findViewById(R.id.pionPoziomBtn);
         pionPoziom.setOnClickListener(this);
+        Button muzyka = (Button)findViewById(R.id.muzykaBtn);
+        muzyka.setOnClickListener(this);
+        Button smartfon = (Button)findViewById(R.id.smartfonBtn);
+        smartfon.setOnClickListener(this);
         
         startService(new Intent(this, PhoneStateService.class));
         startService(new Intent(this, SmsService.class)); 
@@ -109,6 +113,14 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.pionPoziomBtn:
 			Intent pionPoziomInt = new Intent(this,PionPoziomActivity.class);
 			startActivity(pionPoziomInt);
+	        break;
+		case R.id.muzykaBtn:
+			Intent muzykaInt = new Intent(this,MuzykaCzasActivity.class);
+			startActivity(muzykaInt);
+	        break;
+		case R.id.smartfonBtn:
+			Intent smartfonInt = new Intent(this,SmartfonCzasActivity.class);
+			startActivity(smartfonInt);
 	        break;
 		}
 	} 

@@ -1,6 +1,8 @@
 package kpm.ls;
 
 import static kpm.ls.db.Const.NAZWA_TABELI_10;
+import static kpm.ls.db.Const.NAZWA_TABELI_12;
+
 import kpm.ls.db.DataEvent;
 import android.app.ActivityManager;
 import android.app.IntentService;
@@ -29,12 +31,12 @@ public class IntentService1 extends IntentService{
     	dataEvent = new DataEvent(getApplicationContext());  
     	dataBaseManager = new DataBaseManager();
     	Log.i("TAGus", "IntentService1 uruchomiony");
-		
-		SimpleThread simpleThread = new SimpleThread("Browsers time Count");
-		MusicPlayerThread musicPlayerThread = new MusicPlayerThread("MusicPlayerThread");
-		musicPlayerThread.start();
+    	
 		if(check == false){
-			simpleThread.start();	
+			SimpleThread simpleThread = new SimpleThread("Browsers time Count");
+			MusicPlayerThread musicPlayerThread = new MusicPlayerThread("MusicPlayerThread");
+			simpleThread.start();
+			musicPlayerThread.start();
 			check = true;
 		}
 	}
@@ -45,13 +47,12 @@ public class IntentService1 extends IntentService{
 		super(str);
 	    }
 	    public void run() {
-//		for (long i = 0; i < 2139999999; i++) {
 			while(true) {
 				i++;
 		    Log.i("TAGus",  i + " " + getName());
 		    ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 		    String packageName = am.getRunningTasks(1).get(0).topActivity.getPackageName();
-		    String className = am.getRunningTasks(1).get(0).topActivity.getClassName();
+//		    String className = am.getRunningTasks(1).get(0).topActivity.getClassName();
 		    if(packageName.contains("chrome")){
 		    	czasChrome = czasChrome + 3;
 			    Log.i("TAGus","pack: "+packageName);
@@ -68,7 +69,6 @@ public class IntentService1 extends IntentService{
 			sleep(3000);
 		    } catch (InterruptedException e) {}
 		}
-//		Log.i("TAGus", "DONE! " + getName());
 	    }
 	}
 	class MusicPlayerThread extends Thread {
@@ -84,6 +84,7 @@ public class IntentService1 extends IntentService{
 			if(manager.isMusicActive())
 			 {
 				Log.i("TAGus","Muza gra!!!!");
+				dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_12, "muzyka", ""+3, "", "", "");
 			 }
 			else{
 				Log.i("TAGus","Muza NIEE gra!!!!");

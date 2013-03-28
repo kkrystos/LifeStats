@@ -5,9 +5,15 @@
     android:background="@color/red"
     android:layout_height="match_parent" >
 
+
+
+   <ScrollView
+       android:id="@+id/scrollView1"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent" >
    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical" >
 
 
@@ -51,6 +57,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pion/ Poziom" />
+	<Button
+        android:id="@+id/muzykaBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Muzyka" />
+	<Button
+        android:id="@+id/smartfonBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Smartfon" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -111,6 +127,6 @@
             android:text="Dotknij mnie :-)"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout> -->
-   
+   </ScrollView>
 
 </LinearLayout>

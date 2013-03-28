@@ -25,17 +25,14 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 	private AppListener appListener;
 	private InternetListener internetListener;
 	// filtry uruchomionych aplikacji
-	IntentFilter intentFilter1 = new IntentFilter(
-			"android.intent.action.PACKAGE_FIRST_LAUNCH");
-	IntentFilter intentFilter2 = new IntentFilter(
-			"com.android.chrome/com.google.android.apps.chrome.Main");
-	// IntentFilter intentFilter3 = new
-	// IntentFilter("android.intent.action.MAIN");
+//	IntentFilter intentFilter1 = new IntentFilter("android.intent.action.PACKAGE_FIRST_LAUNCH");
+//	IntentFilter intentFilter2 = new IntentFilter("com.android.chrome/com.google.android.apps.chrome.Main");
+	
+    IntentFilter filter1 = new IntentFilter(Intent.ACTION_SCREEN_ON);
+    IntentFilter filter2 = new IntentFilter(Intent.ACTION_SCREEN_OFF);
 	// filtry do InternetListener
-	IntentFilter intentFilterI1 = new IntentFilter(
-			"android.net.conn.CONNECTIVITY_CHANGE");
-	IntentFilter intentFilterI2 = new IntentFilter(
-			"android.net.wifi.STATE_CHANGE");
+	IntentFilter intentFilterI1 = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+	IntentFilter intentFilterI2 = new IntentFilter("android.net.wifi.STATE_CHANGE");
 
 	private int orientationInit = 0;
 	long startPion = 0;
@@ -60,9 +57,9 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 				Toast.LENGTH_SHORT).show();
 		super.onCreate();
 		internetListener = new InternetListener();
-		// registerReceiver(appListener, intentFilter1);
-		registerReceiver(appListener, intentFilter2);
-		// registerReceiver(appListener, intentFilter3);
+		appListener = new AppListener();
+		registerReceiver(appListener, filter1);
+		registerReceiver(appListener, filter2);
 		registerReceiver(internetListener, intentFilterI1);
 		registerReceiver(internetListener, intentFilterI2);
 		startService(new Intent(this, IntentService1.class));
@@ -81,12 +78,6 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 			// Toast.LENGTH_SHORT).show();
 			startPoziom = new Date().getTime();
 		}
-		AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-		if(manager.isMusicActive())
-		 {
-		     Toast.makeText(getApplicationContext(), "Muza gra!!!!", Toast.LENGTH_SHORT).show();
-		 }
-
 	}
 
 	@Override

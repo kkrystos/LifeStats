@@ -16,6 +16,8 @@ public interface Const extends BaseColumns {
     public static final String NAZWA_TABELI_9 = "pion_poziom" ;
     public static final String NAZWA_TABELI_10 = "browsers" ;
     public static final String NAZWA_TABELI_11 = "nauka_krokow" ;
+    public static final String NAZWA_TABELI_12 = "muzyka" ;
+    public static final String NAZWA_TABELI_13 = "smartfon" ;
     
     public static final String URZAD = "kpm.ls.db" ;
     public static final Uri TRESC_URI = Uri.parse("content://"
