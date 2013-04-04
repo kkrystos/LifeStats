@@ -5,28 +5,40 @@
     android:background="@color/red"
     android:layout_height="match_parent" >
 
-
-
    <ScrollView
        android:id="@+id/scrollView1"
        android:layout_width="fill_parent"
        android:layout_height="fill_parent" >
    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical" >
 
-
-        <Button
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+    <Button
         android:id="@+id/polaczenia_mainBtn"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="Połączenia" />
-            <Button
+ 	<Button
         android:id="@+id/sms_mainBtn"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="SMSy" />
+
+ 	<Button
+ 	    android:id="@+id/email_mainBtn"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+ 	    android:layout_height="wrap_content"
+ 	    android:text="EMAIL" />
+
+ 		 </LinearLayout>
                 <Button
         android:id="@+id/klikniecia_mainBtn"
         android:layout_width="match_parent"

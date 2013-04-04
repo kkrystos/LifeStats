@@ -58,12 +58,23 @@ public class MainActivity extends Activity implements OnClickListener{
         muzyka.setOnClickListener(this);
         Button smartfon = (Button)findViewById(R.id.smartfonBtn);
         smartfon.setOnClickListener(this);
-        
+        Button email = (Button)findViewById(R.id.email_mainBtn);
+        email.setOnClickListener(this);
+    }
+    
+    @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	
+    	
+    	
+    	
         startService(new Intent(this, PhoneStateService.class));
         startService(new Intent(this, SmsService.class)); 
-        startService(new Intent(this, DefaultService.class));
-        
-
+        Intent defaultIntent = new Intent(this, DefaultService.class);
+//        defaultIntent.putExtra("account", "kkrystos@gmciaks.com");
+        startService(defaultIntent);
     }
 
 
@@ -88,6 +99,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.sms_mainBtn:
 			Intent smsInt = new Intent(this,SMSActivity.class);
 			startActivity(smsInt);
+			break;
+		case R.id.email_mainBtn:
+			Intent emailInt = new Intent(this,EMAILActivity.class);
+			startActivity(emailInt);
 			break;
 		case R.id.klikniecia_mainBtn:
 			Intent klikInt = new Intent(this,KliknieciaActivity.class);
