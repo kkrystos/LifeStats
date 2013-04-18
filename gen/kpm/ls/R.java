@@ -32,8 +32,8 @@ public final class R {
         public static final int chart_container=0x7f0a0020;
         public static final int chromeCzasTv=0x7f0a0023;
         public static final int dotknieciaTxt=0x7f0a000f;
-        public static final int emailINTv=0x7f0a000c;
-        public static final int emailOUTTv=0x7f0a000d;
+        public static final int emailINTv=0x7f0a000d;
+        public static final int emailOUTTv=0x7f0a000c;
         public static final int email_mainBtn=0x7f0a0003;
         public static final int internetCzasTv=0x7f0a000e;
         public static final int internet_czasBtn=0x7f0a0008;

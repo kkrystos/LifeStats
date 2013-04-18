@@ -16,42 +16,43 @@ public class EMAILActivity extends Activity {
 	private DataEvent dataEvent;
 	private DataBaseManager dataBaseManager;
 	private SQLiteDatabase myDb;
-	
+
 	private String emailsIN = "0";
 	private String emailsOUT = "0";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.email_activity);
-		
-    	dataEvent = new DataEvent(this);  
-    	dataBaseManager = new DataBaseManager();
-    	
+
+		dataEvent = new DataEvent(this);
+		dataBaseManager = new DataBaseManager();
+
 		emailsOUTTv = (TextView) findViewById(R.id.emailOUTTv);
 		emailsINTv = (TextView) findViewById(R.id.emailINTv);
 
 	}
-	
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		
-		emailsOUT = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_4, NAZWA_TABELI_14);	
-		emailsIN = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2, NAZWA_TABELI_14);
 
-    	if(emailsOUT != null){
+		emailsOUT = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_4,
+				NAZWA_TABELI_14);
+		emailsIN = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2,
+				NAZWA_TABELI_14);
 
-    		emailsOUTTv.setText("Wys³a³eœ : " + emailsOUT);
-    	}
-    	
-    	if(emailsIN != null){
+		if (emailsOUT != null) {
 
-    		emailsINTv.setText("Odebra³eœ : " + emailsIN);
-    	}
+			emailsOUTTv.setText("Wys³a³eœ : " + emailsOUT);
+		}
 
+		if (emailsIN != null) {
+
+			emailsINTv.setText("Odebra³eœ : " + emailsIN);
+		}
 
 	}
 }
