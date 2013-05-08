@@ -40,5 +40,14 @@ public class DataBaseManager {
 		  myDb.update(tabela, wartosci, "_id= 1 ", null);
 		  dataEvent.close();
 	  }
+	  
+	  public String pobierzOstatnaWartosc(DataEvent dataEvent,SQLiteDatabase myDb, String[] kolumna, String tabela){
+		  String ostatniaWartosc = "";
+		  myDb = dataEvent.getReadableDatabase();
+		  Cursor kursor = myDb.query(tabela, kolumna ,null, null, null, null, null);
+		  kursor.moveToLast();
+		  ostatniaWartosc = kursor.getString(0);
+		  return ostatniaWartosc;
+	  }
 
 }

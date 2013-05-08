@@ -64,6 +64,8 @@ public class DataEvent extends SQLiteOpenHelper {
 				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KOLUMNA_1 + " TEXT,"
 				+ KOLUMNA_2 + " TEXT," + KOLUMNA_3 + " TEXT," + KOLUMNA_4
 				+ " TEXT," + KOLUMNA_5 + " TEXT );");
+		cv.put(KOLUMNA_4, "0");
+		bd.insert(NAZWA_TABELI_6, KOLUMNA_4, cv);
 		bd.execSQL("CREATE TABLE " + NAZWA_TABELI_7 + " (" + _ID
 				+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KOLUMNA_1 + " TEXT,"
 				+ KOLUMNA_2 + " TEXT," + KOLUMNA_3 + " TEXT," + KOLUMNA_4

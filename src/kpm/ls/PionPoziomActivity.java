@@ -19,8 +19,8 @@ public class PionPoziomActivity extends Activity {
 	private SQLiteDatabase myDb;
 	private String pionString = "";
 	private String poziomString = "";
-	private int pion = 0;
-	private int poziom = 0;
+	private long pion = 0;
+	private long poziom = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +59,8 @@ public class PionPoziomActivity extends Activity {
 //    	}
     	
     	if(pionString != null && poziomString != null){
-    		pion = Integer.parseInt(pionString);
-    		poziom = Integer.parseInt(poziomString);
+    		pion = Long.parseLong(pionString);
+    		poziom = Long.parseLong(poziomString);
     		
     		double suma = pion + poziom;
     		double procentPion = (pion/suma)*100;

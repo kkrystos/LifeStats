@@ -40,6 +40,7 @@ public class MainActivity extends Activity implements OnClickListener{
 //        start_services.setOnClickListener(this);
         Button activityPolaczenia = (Button)findViewById(R.id.polaczenia_mainBtn);
         activityPolaczenia.setOnClickListener(this);
+        
         Button activitySms = (Button)findViewById(R.id.sms_mainBtn);
         activitySms.setOnClickListener(this);
         Button activityClick = (Button)findViewById(R.id.klikniecia_mainBtn);
@@ -60,6 +61,8 @@ public class MainActivity extends Activity implements OnClickListener{
         smartfon.setOnClickListener(this);
         Button email = (Button)findViewById(R.id.email_mainBtn);
         email.setOnClickListener(this);
+        
+//        Toast.makeText(getApplicationContext(), ""+activityPolaczenia.getTextSize()+ "\n"+""+activityPolaczenia.get, Toast.LENGTH_SHORT).show();
     }
     
     @Override

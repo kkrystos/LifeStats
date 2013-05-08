@@ -27,6 +27,7 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 public class DefaultService extends Service /*implements SensorEventListener */{
@@ -94,15 +95,17 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 		dataBaseManager = new DataBaseManager();
 
 		orientationInit = getResources().getConfiguration().orientation;
-
+//
 		if (orientationInit == 1) {
-			// Toast.makeText(getApplicationContext(), "ORIENTATION_PORTRAIT",
-			// Toast.LENGTH_SHORT).show();
-			startPion = new Date().getTime();
+
+			 startPion = new Date().getTime();
+//			 Toast.makeText(getApplicationContext(), "ORIENTATION_Pion" + startPion,
+//			 Toast.LENGTH_SHORT).show();
 		} else if (orientationInit == 2) {
-			// Toast.makeText(getApplicationContext(), "ORIENTATION_LANDSCAPE",
-			// Toast.LENGTH_SHORT).show();
-			startPoziom = new Date().getTime();
+			 startPoziom = new Date().getTime();
+//			 Toast.makeText(getApplicationContext(), "ORIENTATION_Poziom" + startPoziom,
+//			 Toast.LENGTH_SHORT).show();
+
 		}	
 	}
 	
@@ -142,21 +145,23 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 			stopPion = new Date().getTime();
 			startPoziom = new Date().getTime();
 			wynikPion = (stopPion - startPion) / 1000;
-			// Toast.makeText(getApplicationContext(), "ORIENTATION_PORTRAIT: "+
-			// wynikPion, Toast.LENGTH_SHORT).show();
+//			 Toast.makeText(getApplicationContext(), "wynikPion: "+
+//			 wynikPion, Toast.LENGTH_SHORT).show();
+			Log.i("TAGus", "wynikPion: "+wynikPion);
 			dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_9,
-					"pion_poziom", "" + wynikPion, "0", "", "");
+					"wynikPion", "" + wynikPion, "0", "", "");
 			break;
 		case Configuration.ORIENTATION_PORTRAIT:
 
 			stopPoziom = new Date().getTime();
 			startPion = new Date().getTime();
 			wynikPoziom = (stopPoziom - startPoziom) / 1000;
-			// Toast.makeText(getApplicationContext(),
-			// "ORIENTATION_LANDSCAPE: "+ wynikPoziom,
-			// Toast.LENGTH_SHORT).show();
+//			 Toast.makeText(getApplicationContext(),
+//			 "wynikPoziom: "+ wynikPoziom,
+//			 Toast.LENGTH_SHORT).show();
+			Log.i("TAGus", "wynikPoziom: "+wynikPoziom);
 			dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_9,
-					"pion_poziom", "0", "" + wynikPoziom, "", "");
+					"wynikPoziom", "0", "" + wynikPoziom, "", "");
 			break;
 		}
 	}
