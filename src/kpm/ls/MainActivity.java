@@ -1,11 +1,13 @@
 package kpm.ls;
 import static kpm.ls.db.Const.NAZWA_TABELI_7;
+
+import java.io.File;
+
 import kpm.ls.db.DataEvent;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -61,8 +63,16 @@ public class MainActivity extends Activity implements OnClickListener{
         smartfon.setOnClickListener(this);
         Button email = (Button)findViewById(R.id.email_mainBtn);
         email.setOnClickListener(this);
+        Button nfc = (Button)findViewById(R.id.nfcBtn);
+        nfc.setOnClickListener(this);
         
-//        Toast.makeText(getApplicationContext(), ""+activityPolaczenia.getTextSize()+ "\n"+""+activityPolaczenia.get, Toast.LENGTH_SHORT).show();
+
+//        File dir = new File(Environment.getExternalStorageDirectory()
+//                + "/DCIM/Camera");
+//        File[] files = dir.listFiles();
+//        int numberOfImages=files.length;
+//        Toast.makeText(getApplicationContext(), ""+numberOfImages, Toast.LENGTH_SHORT).show();
+        
     }
     
     @Override
@@ -139,6 +149,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.smartfonBtn:
 			Intent smartfonInt = new Intent(this,SmartfonCzasActivity.class);
 			startActivity(smartfonInt);
+	        break;
+		case R.id.nfcBtn:
+			Intent nfcInt = new Intent(this,NFCActivity.class);
+			startActivity(nfcInt);
 	        break;
 		}
 	} 

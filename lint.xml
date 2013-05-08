@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="NewApi">
+        <ignore path="src\kpm\ls\NFCActivity.java" />
+    </issue>
     <issue id="ParserError" severity="ignore" />
 </lint>

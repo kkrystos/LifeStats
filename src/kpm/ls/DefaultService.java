@@ -18,6 +18,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.IntentFilter.MalformedMimeTypeException;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
@@ -25,6 +26,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -34,6 +36,7 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 
 	private AppListener appListener;
 	private InternetListener internetListener;
+	private NFCListener nfcListener;
 	
 //    private static final String ACCOUNT_TYPE_GOOGLE = "com.google";
 //    private static final String[] FEATURES_MAIL = {"service_mail"};
@@ -47,6 +50,12 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 	// filtry do InternetListener
 	IntentFilter intentFilterI1 = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
 	IntentFilter intentFilterI2 = new IntentFilter("android.net.wifi.STATE_CHANGE");
+	
+	// filtry NFC
+	IntentFilter intentFilterNFC1 = new IntentFilter("android.nfc.action.NDEF_DISCOVERED");
+	IntentFilter intentFilterNFC2 = new IntentFilter("android.nfc.action.TECH_DISCOVERED");
+	IntentFilter intentFilterNFC3 = new IntentFilter("android.nfc.action.TAG_DISCOVERED");
+	
 
 	private int orientationInit = 0;
 	long startPion = 0;
@@ -83,10 +92,45 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 //				Toast.LENGTH_SHORT).show();
 		internetListener = new InternetListener();
 		appListener = new AppListener();
+		nfcListener = new NFCListener();
+		
 		registerReceiver(appListener, filter1);
 		registerReceiver(appListener, filter2);
 		registerReceiver(internetListener, intentFilterI1);
 		registerReceiver(internetListener, intentFilterI2);
+		
+	    IntentFilter ndef = new IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED);
+	    try {
+	        ndef.addDataType("*/*");
+	    } catch (MalformedMimeTypeException e) {
+	        throw new RuntimeException("fail", e);
+	    }
+
+	    IntentFilter tech = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
+	    try {
+	        tech.addDataType("*/*");
+	    } catch (MalformedMimeTypeException e) {
+	        throw new RuntimeException("fail", e);
+	    }
+	    IntentFilter tag = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
+	    try {
+	        tech.addDataType("*/*");
+	    } catch (MalformedMimeTypeException e) {
+	        throw new RuntimeException("fail", e);
+	    }
+	    
+//	    IntentFilter[] intentFiltersArray = new IntentFilter[] { tag, ndef, tech };
+	    
+		
+		
+//		registerReceiver(nfcListener, intentFilterNFC1);
+//		registerReceiver(nfcListener, intentFilterNFC2);
+//		registerReceiver(nfcListener, intentFilterNFC3);
+		registerReceiver(nfcListener, tech);
+		registerReceiver(nfcListener, ndef);
+		registerReceiver(nfcListener, tag);
+		
+		
 		Intent intentService1 = new Intent(this, IntentService1.class);
 //		intentService1.putExtra("account", account);
 		startService(intentService1);
