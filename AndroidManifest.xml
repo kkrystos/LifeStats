@@ -57,6 +57,13 @@
         <action android:name="android.intent.action.BOOT_COMPLETED" />
     </intent-filter>
 </receiver>
+<receiver 
+    android:name=".NFCListener">
+             <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+</receiver>
      <activity android:name="kpm.ls.SensorClass" ></activity>
      <activity android:name="kpm.ls.PolaczeniaActivity" ></activity>
      <activity android:name="kpm.ls.SMSActivity" ></activity>
@@ -70,6 +77,22 @@
      <activity android:name="kpm.ls.MuzykaCzasActivity" ></activity>
      <activity android:name="kpm.ls.SmartfonCzasActivity" ></activity>
      <activity android:name="kpm.ls.NFCActivity" ></activity>
+     <activity android:name="kpm.ls.NFCListener" >            
+             <intent-filter android:alwaysRetainTaskState="true" >
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                
+            </intent-filter>
+             <intent-filter >
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+             <intent-filter >
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            
+            </activity>
                 <service android:name=".PhoneStateService"></service>
                 <service android:name="kpm.ls.DefaultService"></service>
                 <service android:name="kpm.ls.SmsService"></service>

@@ -2,6 +2,7 @@
 <lint>
     <issue id="NewApi">
         <ignore path="src\kpm\ls\NFCActivity.java" />
+        <ignore path="src\kpm\ls\NFCListener.java" />
     </issue>
     <issue id="ParserError" severity="ignore" />
 </lint>

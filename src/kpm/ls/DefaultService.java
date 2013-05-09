@@ -52,9 +52,9 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 	IntentFilter intentFilterI2 = new IntentFilter("android.net.wifi.STATE_CHANGE");
 	
 	// filtry NFC
-	IntentFilter intentFilterNFC1 = new IntentFilter("android.nfc.action.NDEF_DISCOVERED");
-	IntentFilter intentFilterNFC2 = new IntentFilter("android.nfc.action.TECH_DISCOVERED");
-	IntentFilter intentFilterNFC3 = new IntentFilter("android.nfc.action.TAG_DISCOVERED");
+//	IntentFilter intentFilterNFC1 = new IntentFilter("android.nfc.action.NDEF_DISCOVERED");
+//	IntentFilter intentFilterNFC2 = new IntentFilter("android.nfc.action.TECH_DISCOVERED");
+//	IntentFilter intentFilterNFC3 = new IntentFilter("android.nfc.action.TAG_DISCOVERED");
 	
 
 	private int orientationInit = 0;
@@ -99,26 +99,26 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 		registerReceiver(internetListener, intentFilterI1);
 		registerReceiver(internetListener, intentFilterI2);
 		
-	    IntentFilter ndef = new IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED);
-	    try {
-	        ndef.addDataType("*/*");
-	    } catch (MalformedMimeTypeException e) {
-	        throw new RuntimeException("fail", e);
-	    }
-
-	    IntentFilter tech = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
-	    try {
-	        tech.addDataType("*/*");
-	    } catch (MalformedMimeTypeException e) {
-	        throw new RuntimeException("fail", e);
-	    }
-	    IntentFilter tag = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
-	    try {
-	        tech.addDataType("*/*");
-	    } catch (MalformedMimeTypeException e) {
-	        throw new RuntimeException("fail", e);
-	    }
-	    
+//	    IntentFilter ndef = new IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED);
+//	    try {
+//	        ndef.addDataType("*/*");
+//	    } catch (MalformedMimeTypeException e) {
+//	        throw new RuntimeException("fail", e);
+//	    }
+//
+//	    IntentFilter tech = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
+//	    try {
+//	        tech.addDataType("*/*");
+//	    } catch (MalformedMimeTypeException e) {
+//	        throw new RuntimeException("fail", e);
+//	    }
+//	    IntentFilter tag = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
+//	    try {
+//	        tech.addDataType("*/*");
+//	    } catch (MalformedMimeTypeException e) {
+//	        throw new RuntimeException("fail", e);
+//	    }
+//	    
 //	    IntentFilter[] intentFiltersArray = new IntentFilter[] { tag, ndef, tech };
 	    
 		
@@ -126,9 +126,9 @@ public class DefaultService extends Service /*implements SensorEventListener */{
 //		registerReceiver(nfcListener, intentFilterNFC1);
 //		registerReceiver(nfcListener, intentFilterNFC2);
 //		registerReceiver(nfcListener, intentFilterNFC3);
-		registerReceiver(nfcListener, tech);
-		registerReceiver(nfcListener, ndef);
-		registerReceiver(nfcListener, tag);
+//		registerReceiver(nfcListener, tech);
+//		registerReceiver(nfcListener, ndef);
+//		registerReceiver(nfcListener, tag);
 		
 		
 		Intent intentService1 = new Intent(this, IntentService1.class);
