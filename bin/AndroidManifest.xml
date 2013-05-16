@@ -77,8 +77,11 @@
      <activity android:name="kpm.ls.MuzykaCzasActivity" ></activity>
      <activity android:name="kpm.ls.SmartfonCzasActivity" ></activity>
      <activity android:name="kpm.ls.NFCActivity" ></activity>
-     <activity android:name="kpm.ls.NFCListener" >            
-             <intent-filter android:alwaysRetainTaskState="true" >
+     <activity android:name=".NFCListener1"></activity>
+     <activity-alias android:name=".NFCListener" 
+           android:targetActivity=".NFCListener1"
+  			android:enabled="true" >            
+             <intent-filter  >
                 <action android:name="android.nfc.action.TAG_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 
@@ -92,7 +95,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
             
-            </activity>
+            </activity-alias>
                 <service android:name=".PhoneStateService"></service>
                 <service android:name="kpm.ls.DefaultService"></service>
                 <service android:name="kpm.ls.SmsService"></service>
