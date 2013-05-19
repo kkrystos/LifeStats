@@ -1,23 +1,47 @@
 package kpm.ls;
 
+import static kpm.ls.db.Const.KOLUMNA_2;
+import static kpm.ls.db.Const.NAZWA_TABELI_15;
+import kpm.ls.db.DataEvent;
 import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.nfc.NfcAdapter;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class NFCActivity extends Activity{
+	
+	private String nfc_use;
+	private DataEvent dataEvent;
+	private DataBaseManager dataBaseManager;
+	private SQLiteDatabase myDb;
+	private TextView nfcTV;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.nfc_activity);
+	    nfcTV = (TextView) findViewById(R.id.nfcTV);
+	    dataEvent = new DataEvent(this);  
+    	dataBaseManager = new DataBaseManager();
+	   
 	}   
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		
+		
+		nfc_use = dataBaseManager.SumujDane(dataEvent, myDb, KOLUMNA_2, NAZWA_TABELI_15);
+		
+    	if(nfc_use != null){
+    		nfcTV.setText("Czujnika NFC u¿y³eœ: "+nfc_use +" razy");
+		   
+    	}
+    	else{
+    		nfcTV.setText("Czujnika NFC u¿y³eœ: 0 razy");
+    	}
+	}
 	}
 
 ///// dzia³a 

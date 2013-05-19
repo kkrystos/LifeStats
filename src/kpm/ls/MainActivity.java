@@ -5,7 +5,11 @@ import java.io.File;
 
 import kpm.ls.db.DataEvent;
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Vibrator;
@@ -72,6 +76,22 @@ public class MainActivity extends Activity implements OnClickListener{
 //        File[] files = dir.listFiles();
 //        int numberOfImages=files.length;
 //        Toast.makeText(getApplicationContext(), ""+numberOfImages, Toast.LENGTH_SHORT).show();
+        
+//        
+//        PackageManager pm = getPackageManager();
+//
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction("android.intent.action.MAIN");
+//        filter.addCategory("android.intent.category.HOME");
+//        filter.addCategory("android.intent.category.DEFAULT");
+//
+//        Context context = getApplicationContext();
+//        ComponentName component = new ComponentName(context.getPackageName(), MainActivity.class.getName());
+//
+//        ComponentName[] components = new ComponentName[] {new ComponentName("com.android.launcher", "com.android.launcher.Launcher"), component};
+//
+//        pm.clearPackagePreferredActivities("com.android.launcher");
+//        pm.addPreferredActivity(filter, IntentFilter.MATCH_CATEGORY_EMPTY, components, component);
         
     }
     

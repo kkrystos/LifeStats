@@ -1,11 +1,14 @@
 package kpm.ls;
 
+import static kpm.ls.db.Const.NAZWA_TABELI_15;
+import kpm.ls.db.DataEvent;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -18,6 +21,10 @@ public class NFCListener1 extends Activity{
 	PendingIntent mPendingIntent;
 	IntentFilter mFilters[];
 	String mTechLists[][];
+	
+	private DataEvent dataEvent;
+	private DataBaseManager dataBaseManager;
+	private SQLiteDatabase myDb;
 
 
 	@Override
@@ -28,9 +35,13 @@ public class NFCListener1 extends Activity{
 	@Override
 	public void onStart(){
 	    super.onStart();
+    	dataEvent = new DataEvent(getApplicationContext());  
+    	dataBaseManager = new DataBaseManager();
 	    
 	    final Intent intent  = getIntent();
 	    Intent intentt = new Intent(intent.getAction());
+	    
+	    dataBaseManager.dodajZdarzenie(dataEvent, NAZWA_TABELI_15, "1", "1", "1", "1", "1");
 	    
 	    getPackageManager().setComponentEnabledSetting(
 	    		  new ComponentName("kpm.ls", "kpm.ls.NFCListener"),
