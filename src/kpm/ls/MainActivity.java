@@ -15,8 +15,10 @@ import android.os.Environment;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,8 +69,38 @@ public class MainActivity extends Activity implements OnClickListener{
         smartfon.setOnClickListener(this);
         Button email = (Button)findViewById(R.id.email_mainBtn);
         email.setOnClickListener(this);
-        Button nfc = (Button)findViewById(R.id.nfcBtn);
-        nfc.setOnClickListener(this);
+//        Button nfc = (Button)findViewById(R.id.nfcBtn);
+//        nfc.setOnClickListener(this);
+        
+        PackageManager pm = getPackageManager();
+        if(!pm.hasSystemFeature(PackageManager.FEATURE_NFC)) {
+
+        	Toast.makeText(getApplicationContext(), "NIE WSPIERA NFC", Toast.LENGTH_SHORT).show();
+//        	LinearLayout layout = (LinearLayout) findViewById(R.id.mainLayout);
+////        	layout.setOrientation(LinearLayout.VERTICAL);
+//        	Button button = new Button(this);
+//        	button.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+//        	button.setText("NOWY BEZ NFC");
+//        	layout.addView(button);
+        } else {
+        	LinearLayout layout = (LinearLayout) findViewById(R.id.mainLayout);
+//        	layout.setOrientation(LinearLayout.VERTICAL);
+        	Button nfcBtn = new Button(this);
+        	nfcBtn.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent nfcInt = new Intent(getApplicationContext(), NFCActivity.class);
+					startActivity(nfcInt);
+				}
+			});
+        	nfcBtn.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        	nfcBtn.setText("CZUJNIK NFC");
+        	layout.addView(nfcBtn);
+//        	Toast.makeText(getApplicationContext(), "WSPIERA NFC", Toast.LENGTH_SHORT).show();
+        }
+
         
 
 //        File dir = new File(Environment.getExternalStorageDirectory()
@@ -77,22 +109,7 @@ public class MainActivity extends Activity implements OnClickListener{
 //        int numberOfImages=files.length;
 //        Toast.makeText(getApplicationContext(), ""+numberOfImages, Toast.LENGTH_SHORT).show();
         
-//        
-//        PackageManager pm = getPackageManager();
-//
-//        IntentFilter filter = new IntentFilter();
-//        filter.addAction("android.intent.action.MAIN");
-//        filter.addCategory("android.intent.category.HOME");
-//        filter.addCategory("android.intent.category.DEFAULT");
-//
-//        Context context = getApplicationContext();
-//        ComponentName component = new ComponentName(context.getPackageName(), MainActivity.class.getName());
-//
-//        ComponentName[] components = new ComponentName[] {new ComponentName("com.android.launcher", "com.android.launcher.Launcher"), component};
-//
-//        pm.clearPackagePreferredActivities("com.android.launcher");
-//        pm.addPreferredActivity(filter, IntentFilter.MATCH_CATEGORY_EMPTY, components, component);
-        
+
     }
     
     @Override
@@ -170,10 +187,10 @@ public class MainActivity extends Activity implements OnClickListener{
 			Intent smartfonInt = new Intent(this,SmartfonCzasActivity.class);
 			startActivity(smartfonInt);
 	        break;
-		case R.id.nfcBtn:
-			Intent nfcInt = new Intent(this,NFCActivity.class);
-			startActivity(nfcInt);
-	        break;
-		}
+//		case R.id.nfcBtn:
+//			Intent nfcInt = new Intent(this,NFCActivity.class);
+//			startActivity(nfcInt);
+//	        break;
+	}
 	} 
 }

@@ -8,7 +8,6 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -24,7 +23,7 @@ public class NFCListener1 extends Activity{
 	
 	private DataEvent dataEvent;
 	private DataBaseManager dataBaseManager;
-	private SQLiteDatabase myDb;
+//	private SQLiteDatabase myDb;
 
 
 	@Override
@@ -58,9 +57,5 @@ public class NFCListener1 extends Activity{
 	    		  PackageManager.DONT_KILL_APP);
 
 	    finish();
-        
-	    
 	}
-	
-
 	}

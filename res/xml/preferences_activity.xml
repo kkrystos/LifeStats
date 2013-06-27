@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Wybierz to co chcesz zliczać" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="polaczenia_check"
+            android:summary="Połączenia"
+            android:title="Połączenia" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="sms_check"
+            android:summary="SMSy"
+            android:title="SMSy" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="email_check"
+            android:summary="EMAILs"
+            android:title="EMAILs" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="klikniecia_check"
+            android:summary="Kliknięcia"
+            android:title="Kliknięcia" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="kroki_check"
+            android:summary="Kroki"
+            android:title="Kroki" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="ladowanie_check"
+            android:summary="Ładowanie"
+            android:title="Ładowanie" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="aplikacje_check"
+            android:summary="Uruchomienia aplikacji"
+            android:title="Uruchomienia aplikacji" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="internet_check"
+            android:summary="Internet"
+            android:title="Internet" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pion_poziom_check"
+            android:summary="Pion/Poziom"
+            android:title="Pion/Poziom" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="muzyka_check"
+            android:summary="Muzyka"
+            android:title="Muzyka" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="smartfon_check"
+            android:summary="Smartfon"
+            android:title="Smartfon" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+    <!-- <PreferenceCategory android:title="Przejdz dalej" >
+        <Preference
+            android:name="add_numbers"
+            android:key="editTextPref"
+            android:summary="Kliknij aby przejść dalej"
+            android:title="Kliknij aby przejść dalej" />
+    </PreferenceCategory> -->
+
+</PreferenceScreen>

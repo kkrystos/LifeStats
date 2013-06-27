@@ -104,7 +104,7 @@ public class DataEvent extends SQLiteOpenHelper {
 				+ KOLUMNA_2 + " TEXT," + KOLUMNA_3 + " TEXT," + KOLUMNA_4
 				+ " TEXT," + KOLUMNA_5 + " TEXT );");
 		cv.put(KOLUMNA_1, "0");
-		cv.put(KOLUMNA_1, "0");
+		cv.put(KOLUMNA_2, "0");
 		cv.put(KOLUMNA_3, "0");
 		cv.put(KOLUMNA_4, "0");
 		cv.put(KOLUMNA_5, "0");
