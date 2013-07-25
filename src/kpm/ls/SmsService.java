@@ -25,7 +25,7 @@ public class SmsService extends Service{
 	private Toast myToast;
 	private SmsListener smsListener;
 	IntentFilter intentFilter1 = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
-	IntentFilter intentFilter2 = new IntentFilter("android.provider.Telephony.SMS_SEND");
+//	IntentFilter intentFilter2 = new IntentFilter("android.provider.Telephony.S");???
 	
 	private String smsNumber;
     private String smsNumberSub;
@@ -56,7 +56,6 @@ public class SmsService extends Service{
 	    super.onCreate();
 	    smsListener = new SmsListener();
 	    registerReceiver(smsListener, intentFilter1);
-	    registerReceiver(smsListener, intentFilter2);
 //	    myToast = Toast.makeText(getApplicationContext(), 
 //	                             "Us³uga SMS zosta³a uruchomiona", 
 //	                             Toast.LENGTH_SHORT);
